@@ -19,7 +19,13 @@ const NewsFeed = () => {
       });
 
       if (response.data.posts.length > 0) {
-        setPosts((prevPosts) => [...prevPosts, ...response.data.posts]);
+        setPosts((prevPosts) => {
+          const newPosts = response.data.posts.filter(
+            (newPost) =>
+              !prevPosts.some((prevPost) => prevPost.id === newPost.id)
+          );
+          return [...prevPosts, ...newPosts];
+        });
       } else {
         setHasMore(false);
       }

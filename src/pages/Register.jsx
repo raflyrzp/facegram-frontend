@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function Register() {
+function RegisterPage() {
   const [formData, setFormData] = useState({
     full_name: "",
     bio: "",
@@ -132,4 +132,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterPage;

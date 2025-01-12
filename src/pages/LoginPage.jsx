@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function LoginPage() {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -91,4 +91,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;

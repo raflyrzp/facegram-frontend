@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import NewsFeed from "../components/NewsFeed";
 import ExplorePeople from "../components/ExplorePeople";
 
-function Home() {
+function HomePage() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -29,4 +29,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-function Profile() {
+function ProfilePage() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const { username: urlUsername } = useParams();
@@ -45,9 +45,7 @@ function Profile() {
       });
       setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId));
     } catch (err) {
-      setErrorMessage(
-        err.response?.data?.message || "Failed to delete the post"
-      );
+      setErrorMessage(err.response?.data?.message);
     }
   };
 
@@ -74,10 +72,20 @@ function Profile() {
       </div>
       <div>
         <h3>Posts</h3>
-        {isPrivate ? (
+        {isPrivate && urlUsername !== currentUser ? (
           <p className="text-muted">The account is private</p>
         ) : (
           <>
+            {urlUsername === currentUser && (
+              <a
+                href="/create-post"
+                className="text-light text-decoration-none"
+              >
+                <button className="btn btn-primary float-end">
+                  Create Post
+                </button>{" "}
+              </a>
+            )}
             <p>Total posts: {posts.length}</p>
             <ul className="list-group">
               {posts.map((post, index) => (
@@ -102,7 +110,7 @@ function Profile() {
                     </p>
                   </div>
 
-                  {post.user.username === currentUser && (
+                  {urlUsername === currentUser && (
                     <button
                       className="btn btn-sm btn-danger col-4"
                       onClick={() => handleDeletePost(post.id)}
@@ -120,4 +128,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default ProfilePage;

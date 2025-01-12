@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Profile from "./pages/Profile";
-import Home from "./pages/Home";
+import CreatePostPage from "./pages/CreatePostPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/Register";
+import ProfilePage from "./pages/ProfilePage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
         <Navbar />
         <div className="container mt-4">
           <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/profile/:username" element={<Profile />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/profile/:username" element={<ProfilePage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/create-post" element={<CreatePostPage />} />
           </Routes>
         </div>
       </div>
